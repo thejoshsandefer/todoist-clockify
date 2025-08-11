@@ -44,6 +44,12 @@ function observeSidebar() {
     btn.textContent = 'Log';
     btn.className = 'clockify-log-btn';
 
+    const wrapper = document.createElement('div');
+    wrapper.className = 'clockify-controls';
+    wrapper.appendChild(timeInput);
+    wrapper.appendChild(projectInput);
+    wrapper.appendChild(btn);
+
     const getDescription = () => {
       const titleEl = document.querySelector('[data-testid="task-view-title"]');
       if (titleEl) {
@@ -76,9 +82,8 @@ function observeSidebar() {
       );
     });
 
-    sidebar.appendChild(timeInput);
-    sidebar.appendChild(projectInput);
-    sidebar.appendChild(btn);
+    const target = sidebar.querySelector(':scope > div:last-child') || sidebar;
+    target.appendChild(wrapper);
   };
 
   document
