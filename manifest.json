@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "Todoist Clockify Integration",
+  "version": "0.1.0",
+  "description": "Adds a Clockify time entry interface to Todoist tasks.",
+  "permissions": ["storage"],
+  "host_permissions": [
+    "https://api.clockify.me/*",
+    "https://todoist.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://todoist.com/*"],
+      "js": ["content-script.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "options_page": "options.html",
+  "action": {
+    "default_title": "Todoist Clockify Integration"
+  }
+}
